@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/jeromeetienne/ar.js/aframe/build/aframe-ar.min.js"></script>
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+  </head>
+  <body style="margin: 0; overflow: hidden;">
+    <a-scene embedded arjs>
+      <!-- Preload assets -->
+      <a-assets>
+        <!-- 3D models for each letter (you can replace with your own models) -->
+        <a-asset-item id="aModel" src="assets/apple/scene.gltf"></a-asset-item>
+        <a-asset-item id="bModel" src="assets/ball/scene.gltf"></a-asset-item>
+        <a-asset-item id="cModel" src="assets/cat/scene.gltf"></a-asset-item>
+        <a-asset-item id="dModel" src="assets/dog/scene.gltf"></a-asset-item>
+        <a-asset-item id="eModel" src="assets/elephan/scene.gltf"></a-asset-item>
+        <a-asset-item id="fModel" src="assets/Fishf/scene.gltf"></a-asset-item>
+        <a-asset-item id="gModel" src="assets/gun/scene.gltf"></a-asset-item>
+        <a-asset-item id="hModel" src="assets/horse_/scene.gltf"></a-asset-item>
+        <a-asset-item id="iModel" src="assets/ice_cream_/scene.gltf"></a-asset-item>
+        <a-asset-item id="jModel" src="assets/jugg/scene.gltf"></a-asset-item>
+        
+        <!-- Audio for each letter -->
+        <audio id="aSound" src="sounds/A for apple.mp3"></audio>
+        <audio id="bSound" src="sounds/B for Ball.mp3"></audio>
+        <audio id="cSound" src="sounds/C for Cat.mp3"></audio>
+        <audio id="dSound" src="sounds/D for Dog.mp3"></audio>
+        <audio id="eSound" src="sounds/E for elephant.mp3"></audio>
+        <audio id="fSound" src="sounds/F for fish.mp3"></audio>
+        <audio id="gSound" src="sounds/G for gun.mp3"></audio>
+        <audio id="hSound" src="sounds/H for horse.mp3"></audio>
+        <audio id="iSound" src="sounds/I.mp3"></audio>
+        <audio id="jSound" src="sounds/J.mp3"></audio>
+        <!-- Add more audio files as needed -->
+      </a-assets>
+
+      <!-- Marker for "A" -->
+      <a-marker type="pattern" url="markers/pattern-A_marker (1).patt" id="aMarker">
+        <a-entity gltf-model="#aModel" position="0 0 0" rotation="0 0 0" scale="5 5 5">
+          <a-sound id="aSoundEntity" src="#aSound" autoplay="false" position="0 1 0"></a-sound>
+        </a-entity>
+      </a-marker>
+
+      <!-- Marker for "B" -->
+      <a-marker type="pattern" url="markers/pattern-B_marker.patt" id="bMarker">
+        <a-entity gltf-model="#bModel" position="0 0 0" rotation="0 0 0" scale="10 10 10">
+          <a-sound id="bSoundEntity" src="#bSound" autoplay="false" position="0 1 0"></a-sound>
+        </a-entity>
+      </a-marker>
+
+      <!-- Marker for "C" -->
+      <a-marker type="pattern" url="markers/pattern-C_marker.patt" id="cMarker">
+        <a-entity gltf-model="#cModel" position="0 0 0" rotation="0 0 0" scale="3 3 3">
+          <a-sound id="cSoundEntity" src="#cSound" autoplay="false" position="0 1 0"></a-sound>
+        </a-entity>
+      </a-marker>
+
+      <a-marker type="pattern" url="markers/pattern-D_letter.patt" id="dMarker">
+        <a-entity gltf-model="#dModel" position="0 0 0" rotation="0 0 0" scale="3 3 3">
+          <a-sound id="dSoundEntity" src="#dSound" autoplay="false" position="0 1 0"></a-sound>
+        </a-entity>
+      </a-marker>
+
+      <a-marker type="pattern" url="markers/pattern-E_letter.patt" id="eMarker">
+        <a-entity gltf-model="#eModel" position="0 0 0" rotation="0 0 0" scale="3 3 3">
+          <a-sound id="eSoundEntity" src="#eSound" autoplay="false" position="0 1 0"></a-sound>
+        </a-entity>
+      </a-marker>
+
+      <a-marker type="pattern" url="markers/pattern-F_letterr.patt" id="fMarker">
+        <a-entity gltf-model="#fModel" position="0 0 0" rotation="0 0 0" scale="1 1 1">
+          <a-sound id="fSoundEntity" src="#fSound" autoplay="false" position="0 1 0"></a-sound>
+        </a-entity>
+      </a-marker>
+
+      <a-marker type="pattern" url="markers/pattern-G_letter.patt" id="gMarker">
+        <a-entity gltf-model="#gModel" position="0 0 0" rotation="0 0 0" scale="3 3 3">
+          <a-sound id="gSoundEntity" src="#gSound" autoplay="false" position="0 1 0"></a-sound>
+        </a-entity>
+      </a-marker>
+
+      <a-marker type="pattern" url="markers/pattern-H_letter.patt" id="hMarker">
+        <a-entity gltf-model="#hModel" position="0 0 0" rotation="0 0 0" scale="3 3 3">
+          <a-sound id="hSoundEntity" src="#hSound" autoplay="false" position="0 1 0"></a-sound>
+        </a-entity>
+      </a-marker>
+
+      <a-marker type="pattern" url="markers/pattern-I_letter.patt" id="iMarker">
+        <a-entity gltf-model="#iModel" position="0 0 0" rotation="0 0 0" scale="3 3 3">
+          <a-sound id="iSoundEntity" src="#iSound" autoplay="false" position="0 1 0"></a-sound>
+        </a-entity>
+      </a-marker>
+
+      <a-marker type="pattern" url="markers/pattern-J_letter.patt" id="jMarker">
+        <a-entity gltf-model="#jModel" position="0 0 0" rotation="0 0 0" scale="1 1 1">
+          <a-sound id="jSoundEntity" src="#jSound" autoplay="false" position="0 1 0"></a-sound>
+        </a-entity>
+      </a-marker>
+      
+      <a-entity camera></a-entity>
+      <!-- Add more markers for the rest of the alphabet -->
+    </a-scene>
+    <script>
+        function setupMarkerEvents(markerId, soundEntityId) {
+        const marker = document.querySelector(markerId);
+        const soundEntity = document.querySelector(soundEntityId);
+
+        marker.addEventListener('markerFound', function () {
+          soundEntity.components.sound.playSound();
+        });
+
+        marker.addEventListener('markerLost', function () {
+          soundEntity.components.sound.stopSound();
+        });
+      }
+
+      // Setting up events for each marker
+      setupMarkerEvents('#aMarker', '#aSoundEntity');
+      setupMarkerEvents('#bMarker', '#bSoundEntity');
+      setupMarkerEvents('#cMarker', '#cSoundEntity');
+      setupMarkerEvents('#dMarker', '#dSoundEntity');
+      setupMarkerEvents('#eMarker', '#eSoundEntity');
+      setupMarkerEvents('#fMarker', '#fSoundEntity');
+      setupMarkerEvents('#gMarker', '#gSoundEntity');
+      setupMarkerEvents('#hMarker', '#hSoundEntity');
+      setupMarkerEvents('#iMarker', '#iSoundEntity');
+      setupMarkerEvents('#jMarker', '#jSoundEntity');
+      </script>
+  </body>
+</html>
