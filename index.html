@@ -4,12 +4,55 @@
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/jeromeetienne/ar.js/aframe/build/aframe-ar.min.js"></script>
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
+    <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      font-family: sans-serif;
+      background: #000;
+      color: white;
+      text-align: center;
+    }
+    #home-screen {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: #111;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+    }
+     #home-screen h1 {
+      font-size: 2em;
+    }
+    #home-screen button {
+      padding: 1em 2em;
+      font-size: 1em;
+      margin-top: 1em;
+      cursor: pointer;
+    }
+    #ar-container {
+      display: none;
+    }
+  </style>
   </head>
-  <body style="margin: 0; overflow: hidden;">
-    <a-scene embedded arjs>
-      <!-- Preload assets -->
+  <body >
+
+    <div id="home-screen">
+    <h1>Welcome to AR Alphabets</h1>
+    <p>Point your camera at a letter marker to see the 3D model and hear its sound.</p>
+    <button onclick="startAR()">Launch Camera</button>
+  </div>
+
+  
+
+    <a-scene id="ar-scene" embedded arjs>
+      
       <a-assets>
-        <!-- 3D models for each letter (you can replace with your own models) -->
         <a-asset-item id="aModel" src="assets/apple/scene.gltf"></a-asset-item>
         <a-asset-item id="bModel" src="assets/ball/scene.gltf"></a-asset-item>
         <a-asset-item id="cModel" src="assets/cat/scene.gltf"></a-asset-item>
@@ -21,7 +64,7 @@
         <a-asset-item id="iModel" src="assets/ice_cream_/scene.gltf"></a-asset-item>
         <a-asset-item id="jModel" src="assets/jugg/scene.gltf"></a-asset-item>
         
-        <!-- Audio for each letter -->
+        
         <audio id="aSound" src="sounds/A for apple.mp3"></audio>
         <audio id="bSound" src="sounds/B for Ball.mp3"></audio>
         <audio id="cSound" src="sounds/C for Cat.mp3"></audio>
@@ -32,10 +75,9 @@
         <audio id="hSound" src="sounds/H for horse.mp3"></audio>
         <audio id="iSound" src="sounds/I.mp3"></audio>
         <audio id="jSound" src="sounds/J.mp3"></audio>
-        <!-- Add more audio files as needed -->
+        
       </a-assets>
 
-      <!-- Marker for "A" -->
       <a-marker type="pattern" url="markers/pattern-A_marker (1).patt" id="aMarker">
         <a-entity gltf-model="#aModel" position="0 0 0" rotation="0 0 0" scale="5 5 5">
           <a-sound id="aSoundEntity" src="#aSound" autoplay="false" position="0 1 0"></a-sound>
@@ -99,9 +141,39 @@
       </a-marker>
       
       <a-entity camera></a-entity>
-      <!-- Add more markers for the rest of the alphabet -->
-    </a-scene>
+
+      </a-scene>
+
+      <button id="back-button" style="
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      padding: 10px 20px;
+      z-index: 20;
+      display: none;
+      font-size: 1em;
+      background: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    ">Back</button>
+
+  
     <script>
+      function startAR() {
+        document.getElementById('home-screen').style.display = 'none';
+        document.getElementById('ar-scene').style.display = 'block';
+        document.getElementById('back-button').style.display = 'block';
+      }
+
+      function goBack() {
+    document.getElementById('home-screen').style.display = 'flex';
+    document.getElementById('ar-scene').style.display = 'none';
+    document.getElementById('back-button').style.display = 'none';
+  }
+
+  document.getElementById('back-button').addEventListener('click', goBack);
+
         function setupMarkerEvents(markerId, soundEntityId) {
         const marker = document.querySelector(markerId);
         const soundEntity = document.querySelector(soundEntityId);
